@@ -1,0 +1,7 @@
+/**
+ * SaltzekoMakina
+ */
+public class SaltzekoMakina {
+
+	
+}
