@@ -1,7 +1,0 @@
-/**
- * SaltzekoMakina
- */
-public class SaltzekoMakina {
-
-	
-}
