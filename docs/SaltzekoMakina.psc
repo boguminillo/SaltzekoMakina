@@ -36,19 +36,23 @@ Algoritmo SaltzekoMakinaMenu
 	Repetir
 		Escribir 'Menu'
 		Leer op
-		Si op<>0 Entonces
-			gPrezioa <- gPrezioa+prezioak[op]*1.21
-			kantitateak[op] <- kantitateak[op]+1
-			Escribir produktuak[op]+' autatu duzu'
-			kont = 1
-			Mientras kont < 9 Hacer
-				Si kantitateak[kont] >0
-					Escribir kantitateak[kont]," ",produktuak[kont]
-				FinSi
-				kont = kont + 1
-			FinMientras
-			Escribir '1 jarraitzeko 0 amaitzeko'
-			Leer jarraitu
+		Si op==0 Entonces
+			jarraitu <- 0
+		SiNo
+			Si op>0 Y op<9 Entonces
+				gPrezioa <- gPrezioa+prezioak[op]*1.21
+				kantitateak[op] <- kantitateak[op]+1
+				Escribir produktuak[op]+' autatu duzu'
+				kont <- 1
+				Mientras kont<9 Hacer
+					Si kantitateak[kont]>0 Entonces
+						Escribir kantitateak[kont],' ',produktuak[kont]
+					FinSi
+					kont <- kont+1
+				FinMientras
+				Escribir '1 jarraitzeko 0 amaitzeko'
+				Leer jarraitu
+			FinSi
 		FinSi
-	Hasta Que op==0 O jarraitu==0
+	Hasta Que jarraitu==0
 FinAlgoritmo

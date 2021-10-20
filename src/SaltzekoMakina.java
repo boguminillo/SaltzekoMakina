@@ -13,6 +13,12 @@ public class SaltzekoMakina {
 	private static int[] kantitateak = new int[9];
 	private static Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Scanner-en bidez informazioa eskatuko du zenbaki oso bat sartu arte,
+	 * sartutako zebnaki osoa itzuliko du
+	 * 
+	 * @return sartutako zenbaki osoa
+	 */
 	private static int intIrakurri() {
 		int znb = -1;
 		boolean errepikatu;
@@ -28,6 +34,13 @@ public class SaltzekoMakina {
 		return znb;
 	}
 
+	/**
+	 * Produktuen eskaera egingo du. Produktu bakoitza eskatu ondoren eskatutako
+	 * guztia eta prezioa BEZ-ekin azalduko du eta galdetuko du produktu gehiago
+	 * eskatu nahi diren ala ez.
+	 * 
+	 * @return double ezkatutako produktuen prezioa.
+	 */
 	private static double menu() {
 		double gPrezio = 0;
 		int op;
