@@ -10,7 +10,9 @@ public class SaltzekoMakina {
 	private static final String[] PRODUKTUAK = { "Irten", "Ur botilatxoa", "Kola botilatxoa", "Laranja botilatxoa",
 			"Limoi botilatxoa", "Nestea", "Kit-Kat", "Toblerone", "Fruitu lehorrak" };
 	private static final double[] PREZIOAK = { 0, 1.5, 2, 2, 2, 1.8, 1.5, 2, 1 };
-	private static int[] kantitateak = new int[9];
+	private static int[] produktuKantitateak = new int[PRODUKTUAK.length];
+	private static final double[] DIRUMOTAK = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 };
+	private static int[] diruKantitateak = new int[DIRUMOTAK.length];
 	private static Scanner sc = new Scanner(System.in);
 
 	/**
@@ -74,6 +76,11 @@ public class SaltzekoMakina {
 		} while (true);
 	}
 
+	/**
+	 * 
+	 * @param d
+	 * @return
+	 */
 	private static double round(double d) {
 		return Math.round(d * 100) / 100.0; // poner la historia de esto en lo del debugger
 	}
@@ -83,8 +90,29 @@ public class SaltzekoMakina {
 	 */
 	private static void autatutaErakutzi() {
 		for (int i = 1; i < PREZIOAK.length; i++) {
-			if (kantitateak[i] > 0) {
-				System.out.println(kantitateak[i] + " " + PRODUKTUAK[i]);
+			if (produktuKantitateak[i] > 0) {
+				System.out.println(produktuKantitateak[i] + " " + PRODUKTUAK[i]);
+			}
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private static void produktuKantitateakHasieratu() {
+		for (int i = 0; i < PRODUKTUAK.length; i++) {
+			produktuKantitateak[i] = 0;
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private static void kanbioakErakutzi() {
+		for (int i = 0; i < DIRUMOTAK.length; i++) { // documentar debugger
+			if (diruKantitateak[i] > 0) {
+				System.out.println(diruKantitateak[i] + "x" + DIRUMOTAK[i] + "€");
+				diruKantitateak[i] = 0;
 			}
 		}
 	}
@@ -114,12 +142,12 @@ public class SaltzekoMakina {
 			} else if (op > 0 && op < 9) {
 				gPrezio += PREZIOAK[op] * 1.21;
 				gPrezio = round(gPrezio);
-				kantitateak[op]++;
+				produktuKantitateak[op]++;
 				System.out.println(PRODUKTUAK[op] + " autatu duzu.\nGuztira:");
 				autatutaErakutzi();
 				System.out.println(gPrezio + "€");
-				System.out.println("1 jarraitzeko, edozein zenbaki ordaintzeko.");
-				jarraitu = intIrakurri() == 1;
+				System.out.println("Produktu gehiago erosi nahi dituzu? (B)ai/(E)z");
+				jarraitu = baiEzIrakurri();
 			} else {
 				System.out.println("Ez dago produkturik sartutako kodearekin.");
 			}
@@ -149,13 +177,36 @@ public class SaltzekoMakina {
 		return resto; // documentar debugger
 	}
 
-	public static void main(String[] args) {
-		double prezio = menu();
-		double resto = eskatuDirua(prezio);
-		if (resto <= 0) {
-			autatutaErakutzi();
-			resto = -resto;
+	/**
+	 * 
+	 * @param kanbioak
+	 */
+	private static void itzuli(double kanbioak) {
+		for (int i = 0; i < DIRUMOTAK.length; i++) {
+			while (kanbioak >= DIRUMOTAK[i] - 0.001) {
+				kanbioak -= DIRUMOTAK[i];
+				diruKantitateak[i]++;
+			}
 		}
+		kanbioakErakutzi();
+	}
+
+	public static void main(String[] args) {
+		boolean jarraitu = true;
+		do {
+			double prezio = menu();
+			double kanbioak = eskatuDirua(prezio);
+			if (kanbioak <= 0) {
+				System.out.println("Bildu zure produktuak:");
+				autatutaErakutzi();
+				kanbioak = -kanbioak;
+				jarraitu = false;
+			} else {
+				produktuKantitateakHasieratu();
+			}
+			itzuli(kanbioak);
+		} while (jarraitu);
+		System.out.println("Eskerrik asko. Hurrengora arte!");
 		sc.close();
 	}
 }
