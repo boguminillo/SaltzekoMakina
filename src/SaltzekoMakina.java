@@ -82,7 +82,7 @@ public class SaltzekoMakina {
 	 * @return
 	 */
 	private static double round(double d) {
-		return Math.round(d * 100) / 100.0; // poner la historia de esto en lo del debugger
+		return Math.round(d * 100) / 100.0; // poner la historia de esto en lo del debugger el .0
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class SaltzekoMakina {
 	 * 
 	 */
 	private static void kanbioakErakutzi() {
-		for (int i = 0; i < DIRUMOTAK.length; i++) { // documentar debugger
+		for (int i = 0; i < DIRUMOTAK.length; i++) { // documentar debugger prezioak.length
 			if (diruKantitateak[i] > 0) {
 				System.out.println(diruKantitateak[i] + "x" + DIRUMOTAK[i] + "€");
 				diruKantitateak[i] = 0;
