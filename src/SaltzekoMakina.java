@@ -119,6 +119,18 @@ public class SaltzekoMakina {
 	}
 
 	/**
+	 * Produktuen menua pantailatik inprimatuko du
+	 */
+	private static void menuaInprimatu() {
+		System.out.println("╔═══════╦═══════════════════════════╦═════════╗\n"
+				+ "║ Kodea ║        Produktua          ║ Prezioa ║\n" + "╠═══════╬═══════════════════════════╬═════════╣");
+		for (int i = 0; i < PRODUKTUAK.length; i++) {
+			System.out.printf("║     %d ║ %-25s ║ %.2f€   ║\n", i, PRODUKTUAK[i], PREZIOAK[i]);
+		}
+		System.out.println("╚═══════╩═══════════════════════════╩═════════╝");
+	}
+
+	/**
 	 * Produktuen eskaera egingo du. Produktu bakoitza eskatu ondoren eskatutako
 	 * guztia eta prezio osoa BEZ-ekin azalduko du eta galdetuko du produktu gehiago
 	 * eskatu nahi diren ala ez.
@@ -130,13 +142,7 @@ public class SaltzekoMakina {
 		int op;
 		boolean jarraitu = true;
 		do {
-			System.out.println("╔═══════╦════════════════════╦═════════╗\n"
-					+ "║ Kodea ║     Produktua      ║ Prezioa ║\n" + "╠═══════╬════════════════════╬═════════╣\n"
-					+ "║     0 ║ Irten              ║         ║\n" + "║     1 ║ Ur botilatxoa      ║ 1,5€    ║\n"
-					+ "║     2 ║ Kola botilatxoa    ║ 2€      ║\n" + "║     3 ║ Laranja botilatxoa ║ 2€      ║\n"
-					+ "║     4 ║ Limoi botilatxoa   ║ 2€      ║\n" + "║     5 ║ Nestea             ║ 1,80€   ║\n"
-					+ "║     6 ║ Kit-Kat            ║ 1,50€   ║\n" + "║     7 ║ Toblerone          ║ 2€      ║\n"
-					+ "║     8 ║ Fruitu lehorrak    ║ 1€      ║\n" + "╚═══════╩════════════════════╩═════════╝");
+			menuaInprimatu();
 			op = intIrakurri();
 			if (op == 0) {
 				gPrezio = 0;
