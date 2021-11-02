@@ -1,9 +1,11 @@
 package src;
 
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * SaltzekoMakina
+ * 
  */
 public class SaltzekoMakina {
 
@@ -12,7 +14,9 @@ public class SaltzekoMakina {
 	private static final double[] PREZIOAK = { 0, 1.5, 2, 2, 2, 1.8, 1.5, 2, 1 };
 	private static int[] produktuKantitateak = new int[PRODUKTUAK.length];
 	private static final double[] DIRUMOTAK = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 };
-	private static int[] diruKantitateak = new int[DIRUMOTAK.length];
+	private static final String[] DIRUMOTAIZENAK = { "200€ bilete", "100€ bilete", "50€ bilete", "20€ bilete",
+			"10€ bilete", "5€ bilete", "2€ txanpon", "1€ txanpon", "50 zentimo txanpon", "20 zentimo txanpon",
+			"10 zentimo txanpon", "5 zentimo txanpon", "2 zentimo txanpon", "1 zentimo txanpon" };
 	private static Scanner sc = new Scanner(System.in);
 
 	/**
@@ -58,18 +62,25 @@ public class SaltzekoMakina {
 	}
 
 	/**
+	 * Scanner-en bidez informazioa eskatuko du e edo b sartu arte, boolean bat
+	 * itzuliko du satutako karakterearen arabera
 	 * 
-	 * 
-	 * @return
+	 * @return true b sartzen badu eta false e sartzen badu
 	 */
 	private static boolean baiEzIrakurri() {
-		char bz;
+		String irakurri;
+		char be;
 		do {
-			bz = sc.nextLine().charAt(0);
-			if (bz == 'b' || bz == 'B') {
-				return true;
-			} else if (bz == 'e' || bz == 'E') {
-				return false;
+			irakurri = sc.nextLine();
+			if (irakurri.length() == 1) {
+				be = irakurri.charAt(0);
+				if (be == 'b' || be == 'B') {
+					return true;
+				} else if (be == 'e' || be == 'E') {
+					return false;
+				} else {
+					System.out.println("B edo E autagaiak izan behar dira.");
+				}
 			} else {
 				System.out.println("B edo E autagaiak izan behar dira.");
 			}
@@ -77,19 +88,21 @@ public class SaltzekoMakina {
 	}
 
 	/**
+	 * Double bat bi dezimaletara biribilduko du
 	 * 
-	 * @param d
-	 * @return
+	 * @param d biribildu nahi dugun double
+	 * @return bi dezimaleko double
 	 */
 	private static double round(double d) {
-		return Math.round(d * 100) / 100.0; // poner la historia de esto en lo del debugger el .0
+		return Math.round(d * 100) / 100.0;
+		// TODO poner la historia del .0 en lo del debugger el .0
 	}
 
 	/**
-	 * 
+	 * Autatutako produktu guztiak pantailatik inprimatuko ditu
 	 */
 	private static void autatutaErakutzi() {
-		for (int i = 1; i < PREZIOAK.length; i++) {
+		for (int i = 1; i < PRODUKTUAK.length; i++) {
 			if (produktuKantitateak[i] > 0) {
 				System.out.println(produktuKantitateak[i] + " " + PRODUKTUAK[i]);
 			}
@@ -97,23 +110,11 @@ public class SaltzekoMakina {
 	}
 
 	/**
-	 * 
+	 * ProduktuKantitateak hasieratuko du 0 esleitzen posizio guztietan
 	 */
 	private static void produktuKantitateakHasieratu() {
 		for (int i = 0; i < PRODUKTUAK.length; i++) {
 			produktuKantitateak[i] = 0;
-		}
-	}
-
-	/**
-	 * 
-	 */
-	private static void kanbioakErakutzi() {
-		for (int i = 0; i < DIRUMOTAK.length; i++) { // documentar debugger prezioak.length
-			if (diruKantitateak[i] > 0) {
-				System.out.println(diruKantitateak[i] + "x" + DIRUMOTAK[i] + "€");
-				diruKantitateak[i] = 0;
-			}
 		}
 	}
 
@@ -138,7 +139,8 @@ public class SaltzekoMakina {
 					+ "║     8 ║ Fruitu lehorrak    ║ 1€      ║\n" + "╚═══════╩════════════════════╩═════════╝");
 			op = intIrakurri();
 			if (op == 0) {
-				jarraitu = false;
+				gPrezio = 0;
+				produktuKantitateakHasieratu();
 			} else if (op > 0 && op < 9) {
 				gPrezio += PREZIOAK[op] * 1.21;
 				gPrezio = round(gPrezio);
@@ -156,11 +158,17 @@ public class SaltzekoMakina {
 	}
 
 	/**
+	 * Ordaindu nahi den ala ez galedtuko du eta dirua eskatuko du guztiz ordaindu
+	 * arte edo erabiltzailea gehiago ordaindu nahi ez duela esan arte.
 	 * 
-	 * @param gPrezio
-	 * @return
+	 * @param ordainduta   AtomicBoolean true bihurtuko da guztiz ordaindu badu,
+	 *                     bestela false izango da
+	 * @param prezioTotala ordaindu behar den dirua double bezala
+	 * @return eman behar diren kanbioak double bezala
 	 */
-	private static double eskatuDirua(double prezioTotala) {
+	private static double eskatuDirua(double prezioTotala, AtomicBoolean ordainduta) {
+		// TODO documentar AtomicBoolean, sirve para poder modificarlo dentro de la
+		// funcion y que la informacion llegue al main.
 		double resto = prezioTotala;
 		do {
 			System.out.println(prezioTotala + "€ ordaindu behar duzu.\n" + resto + "€ falta da\n\n"
@@ -169,44 +177,49 @@ public class SaltzekoMakina {
 				System.out.println("Sartu dirua.");
 				double sartutakoDirua = doubleIrakurri();
 				resto -= sartutakoDirua;
+				resto = round(resto);
 			} else {
+				ordainduta.set(false);
 				return prezioTotala - resto;
 			}
 		} while (resto > 0);
-		resto = round(resto);
-		return resto; // documentar debugger
+		ordainduta.set(true);
+		return Math.abs(resto);
+		// TODO documentar debugger return -resto
 	}
 
 	/**
+	 * Pantailatik inprimatuko ditu eman behar diren kanbioak bilete eta txanponetan
 	 * 
-	 * @param kanbioak
+	 * @param kanbioak double kanbio totalak
 	 */
 	private static void itzuli(double kanbioak) {
+		int kantitatea = 0;
 		for (int i = 0; i < DIRUMOTAK.length; i++) {
+			// -0.001 double-en zehaztasun-arazo bat zuzentzeko da.
 			while (kanbioak >= DIRUMOTAK[i] - 0.001) {
 				kanbioak -= DIRUMOTAK[i];
-				diruKantitateak[i]++;
+				kantitatea++;
+			}
+			if (kantitatea > 0) {
+				System.out.println(kantitatea + "x" + DIRUMOTAIZENAK[i]);
+				kantitatea = 0;
 			}
 		}
-		kanbioakErakutzi();
 	}
 
 	public static void main(String[] args) {
-		boolean jarraitu = true;
-		do {
+		while (true) {
 			double prezio = menu();
-			double kanbioak = eskatuDirua(prezio);
-			if (kanbioak <= 0) {
+			AtomicBoolean ordainduta = new AtomicBoolean();
+			double kanbioak = eskatuDirua(prezio, ordainduta);
+			if (ordainduta.get()) {
 				System.out.println("Bildu zure produktuak:");
 				autatutaErakutzi();
-				kanbioak = -kanbioak;
-				jarraitu = false;
 			} else {
 				produktuKantitateakHasieratu();
 			}
 			itzuli(kanbioak);
-		} while (jarraitu);
-		System.out.println("Eskerrik asko. Hurrengora arte!");
-		sc.close();
+		}
 	}
 }
