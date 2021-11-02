@@ -6,17 +6,41 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * SaltzekoMakina
  * 
+ * Autobus-terminal bateko makina saltzaile bat kudeatzea ahalbidetuko duen
+ * aplikazioa. Erabiltzaileak zenbakizko teklatu baten eta pantaila baten bidez
+ * jarduten du makinarekin. Makinak aukeren menuak eskaintzen ditu eta
+ * erabiltzaileak egiten duen aukeraketa jasotzen du, betiere erantzun egokia
+ * sortuz. Dirua sartzea, aldaketak itzultzea eta produktua ematea ere
+ * teklatuaren edo pantaila bidezko mezuen bidez simulatuko dira.
  */
 public class SaltzekoMakina {
 
+	/**
+	 * Saltzen diren produktuen izenak
+	 */
 	private static final String[] PRODUKTUAK = { "Irten", "Ur botilatxoa", "Kola botilatxoa", "Laranja botilatxoa",
 			"Limoi botilatxoa", "Nestea", "Kit-Kat", "Toblerone", "Fruitu lehorrak" };
+	/**
+	 * Saltzen diren produktuen prezioak
+	 */
 	private static final double[] PREZIOAK = { 0, 1.5, 2, 2, 2, 1.8, 1.5, 2, 1 };
+	/**
+	 * Autatutako produktuen kantitateak gordetzeko erabiliko den array-a
+	 */
 	private static int[] produktuKantitateak = new int[PRODUKTUAK.length];
+	/**
+	 * Makina eman ahal dituen bilete eta txanponen balioak
+	 */
 	private static final double[] DIRUMOTAK = { 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 };
+	/**
+	 * Makina eman ahal dituen bilete eta txanponen izenak
+	 */
 	private static final String[] DIRUMOTAIZENAK = { "200€ bilete", "100€ bilete", "50€ bilete", "20€ bilete",
 			"10€ bilete", "5€ bilete", "2€ txanpon", "1€ txanpon", "50 zentimo txanpon", "20 zentimo txanpon",
 			"10 zentimo txanpon", "5 zentimo txanpon", "2 zentimo txanpon", "1 zentimo txanpon" };
+	/**
+	 * Erabiltzailea informazioa sartzeko erabiliko den Scanner
+	 */
 	private static Scanner sc = new Scanner(System.in);
 
 	/**
@@ -123,7 +147,8 @@ public class SaltzekoMakina {
 	 */
 	private static void menuaInprimatu() {
 		System.out.println("╔═══════╦═══════════════════════════╦═════════╗\n"
-				+ "║ Kodea ║        Produktua          ║ Prezioa ║\n" + "╠═══════╬═══════════════════════════╬═════════╣");
+				+ "║ Kodea ║        Produktua          ║ Prezioa ║\n"
+				+ "╠═══════╬═══════════════════════════╬═════════╣");
 		for (int i = 0; i < PRODUKTUAK.length; i++) {
 			System.out.printf("║     %d ║ %-25s ║ %.2f€   ║\n", i, PRODUKTUAK[i], PREZIOAK[i]);
 		}
@@ -214,6 +239,11 @@ public class SaltzekoMakina {
 		}
 	}
 
+	/**
+	 * Main metodoa, makinaren funtzio guztiak bukle baten egingo ditu
+	 * 
+	 * @param args Terminalean sartutako argumentuak
+	 */
 	public static void main(String[] args) {
 		while (true) {
 			double prezio = menu();
