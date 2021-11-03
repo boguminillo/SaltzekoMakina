@@ -168,11 +168,12 @@ public class SaltzekoMakina {
 		boolean jarraitu = true;
 		do {
 			menuaInprimatu();
+			System.out.println("Aukeratu produktu bat (0-8)");
 			op = intIrakurri();
 			if (op == 0) {
 				gPrezio = 0;
 				produktuKantitateakHasieratu();
-			} else if (op > 0 && op < 9) {
+			} else if (op > 0 && op < PRODUKTUAK.length) {
 				gPrezio += PREZIOAK[op] * 1.21;
 				gPrezio = round(gPrezio);
 				produktuKantitateak[op]++;

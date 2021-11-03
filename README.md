@@ -3,6 +3,8 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 ## Talde Kontratua
 
+[Kontratua](/dokumentazioa/Kontratua.pdf)
+
 ## Iturburu-kodea
 
 [Kodea](/src/SaltzekoMakina.java)
@@ -17,8 +19,8 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 ## Sasikodea
 
-[Menu](/dokumentazioa/SaltzekoMakinaMenu.psc)
-[EskatuDirua](/dokumentazioa/SaltzekoMakinaEskatuDirua.psc)
+[Menu](/dokumentazioa/SaltzekoMakinaMenu.psc)\
+[EskatuDirua](/dokumentazioa/SaltzekoMakinaEskatuDirua.psc)\
 [Kanbioak](/dokumentazioa/SaltzekoMakinaKanbioak.psc)
 
 ## Arazketa/Errore Txostena
