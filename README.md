@@ -1,9 +1,29 @@
 # SaltzekoMakina
-Proyecto Web **Java EE** siguiendo el patrón de **MVC** contra una base de datos **Mysql**\
-CMS para gestionar los cursos y los participantes de Lanbide
+Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
-![screenshot 1]( /dokumentazioa/SaltzekoMakinaEskatuDirua.png)
+## Talde Kontratua
 
-## Estructura Clases del proyecto
+## Iturburu-kodea
 
-Interesante consultar la documentación [JavaDoc API](https://boguminillo.github.io/SaltzekoMakina/).
+[Kodea](/src/SaltzekoMakina.java)
+
+## Fluxu Diagramak
+
+![Menu](/dokumentazioa/Menu.png)
+![EskatuDirua](/dokumentazioa/EskatuDirua.png)
+![Kanbioak](/dokumentazioa/Kanbioak.png)
+
+## Konplexutasun Ziklomatikoa
+
+## Sasikodea
+
+[Menu](/dokumentazioa/SaltzekoMakinaMenu.psc)
+[EskatuDirua](/dokumentazioa/SaltzekoMakinaEskatuDirua.psc)
+[Kanbioak](/dokumentazioa/SaltzekoMakinaKanbioak.psc)
+
+## Arazketa/Errore Txostena
+
+
+## JavaDoc dokumentazioa
+
+Hemen ikusi ahal da dokumentazioa web moduan [JavaDoc API](https://boguminillo.github.io/SaltzekoMakina/).
