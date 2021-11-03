@@ -15,13 +15,13 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 [Kontratua](/dokumentazioa/Kontratua.pdf)
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## Iturburu-kodea
 
 [Kodea](/src/SaltzekoMakina.java)
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## Fluxu Diagramak
 
@@ -29,7 +29,7 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 ![EskatuDirua](/dokumentazioa/EskatuDirua.png)
 ![Kanbioak](/dokumentazioa/Kanbioak.png)
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## Konplexutasun Ziklomatikoa
 
@@ -37,7 +37,7 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 ![EskatuDirua](/dokumentazioa/EskatuDiruaGrafo.png)
 ![Kanbioak](/dokumentazioa/KanbioakGrafo.png)
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## Sasikodea
 
@@ -45,16 +45,16 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 [EskatuDirua](/dokumentazioa/SaltzekoMakinaEskatuDirua.psc)\
 [Kanbioak](/dokumentazioa/SaltzekoMakinaKanbioak.psc)
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## Arazketa/Errore Txostena
 
 
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
 
 ## JavaDoc Dokumentazioa
 
 Hemen ikusi ahal da dokumentazioa web moduan [JavaDoc API](https://boguminillo.github.io/SaltzekoMakina/).
 
-[Gora](#saltzekomakina)
+[:arrow_up:](#saltzekomakina)
