@@ -25,16 +25,22 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 ## Fluxu Diagramak
 
+### Menu
 ![Menu](/dokumentazioa/Menu.png)
+### Eskatu Dirua
 ![EskatuDirua](/dokumentazioa/EskatuDirua.png)
+### Kanbioak
 ![Kanbioak](/dokumentazioa/Kanbioak.png)
 
 [:arrow_up:](#saltzekomakina)
 
 ## Konplexutasun Ziklomatikoa
 
+### Menu
 ![Menu](/dokumentazioa/MenuGrafo.png)
+### Eskatu Dirua
 ![EskatuDirua](/dokumentazioa/EskatuDiruaGrafo.png)
+### Kanbioak
 ![Kanbioak](/dokumentazioa/KanbioakGrafo.png)
 
 [:arrow_up:](#saltzekomakina)
