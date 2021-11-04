@@ -119,7 +119,6 @@ public class SaltzekoMakina {
 	 */
 	private static double round(double d) {
 		return Math.round(d * 100) / 100.0;
-		// TODO poner la historia del .0 en lo del debugger el .0
 	}
 
 	/**
@@ -199,8 +198,6 @@ public class SaltzekoMakina {
 	 * @return eman behar diren kanbioak double bezala
 	 */
 	private static double eskatuDirua(double prezioTotala, AtomicBoolean ordainduta) {
-		// TODO documentar AtomicBoolean, sirve para poder modificarlo dentro de la
-		// funcion y que la informacion llegue al main.
 		double resto = prezioTotala;
 		do {
 			System.out.println(prezioTotala + "€ ordaindu behar duzu.\n" + resto + "€ falta da\n\n"
@@ -217,7 +214,6 @@ public class SaltzekoMakina {
 		} while (resto > 0);
 		ordainduta.set(true);
 		return Math.abs(resto);
-		// TODO documentar debugger return -resto
 	}
 
 	/**

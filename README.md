@@ -55,7 +55,7 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 ## Arazketa/Errore Txostena
 
-
+[Arazketa/Errore Txostena](/dokumentazioa/ArazketaTxostena.pdf)
 
 [:arrow_up:](#saltzekomakina)
 
