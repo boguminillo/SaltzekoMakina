@@ -125,11 +125,13 @@ public class SaltzekoMakina {
 	 * Autatutako produktu guztiak pantailatik inprimatuko ditu
 	 */
 	private static void autatutaErakutzi() {
+		System.out.println("=============================================");
 		for (int i = 1; i < PRODUKTUAK.length; i++) {
 			if (produktuKantitateak[i] > 0) {
-				System.out.println(produktuKantitateak[i] + " " + PRODUKTUAK[i]);
+				System.out.println(produktuKantitateak[i] + " x " + PRODUKTUAK[i]);
 			}
 		}
+		System.out.println("=============================================");
 	}
 
 	/**
@@ -176,9 +178,9 @@ public class SaltzekoMakina {
 				gPrezio += PREZIOAK[op] * 1.21;
 				gPrezio = round(gPrezio);
 				produktuKantitateak[op]++;
-				System.out.println(PRODUKTUAK[op] + " autatu duzu.\nGuztira:");
+				System.out.println(PRODUKTUAK[op] + " autatu duzu.\n\nZure saskia:");
 				autatutaErakutzi();
-				System.out.println(gPrezio + "€");
+				System.out.println("Guztira: " + gPrezio + "€\n");
 				System.out.println("Produktu gehiago erosi nahi dituzu? (B)ai/(E)z");
 				jarraitu = baiEzIrakurri();
 			} else {
@@ -200,8 +202,8 @@ public class SaltzekoMakina {
 	private static double eskatuDirua(double prezioTotala, AtomicBoolean ordainduta) {
 		double resto = prezioTotala;
 		do {
-			System.out.println(prezioTotala + "€ ordaindu behar duzu.\n" + resto + "€ falta da\n\n"
-					+ "Dirua sartu nahi duzu (B)ai/(E)z:");
+			System.out.println(prezioTotala + "€ ordaindu behar duzu.\n-----------------------------------\n" + resto
+					+ "€ falta da\n\n" + "Dirua sartu nahi duzu (B)ai/(E)z:");
 			if (baiEzIrakurri()) {
 				System.out.println("Sartu dirua.");
 				double sartutakoDirua = doubleIrakurri();
