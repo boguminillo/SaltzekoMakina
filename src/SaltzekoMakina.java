@@ -105,6 +105,10 @@ public class SaltzekoMakina {
 				} else {
 					System.out.println("B edo E autagaiak izan behar dira.");
 				}
+			} else if (irakurri.equalsIgnoreCase("bai")) {
+				return true;
+			} else if (irakurri.equalsIgnoreCase("ez")) {
+				return false;
 			} else {
 				System.out.println("B edo E autagaiak izan behar dira.");
 			}
@@ -201,14 +205,23 @@ public class SaltzekoMakina {
 	 */
 	private static double eskatuDirua(double prezioTotala, AtomicBoolean ordainduta) {
 		double resto = prezioTotala;
+		double sartutakoDirua;
 		do {
 			System.out.println(prezioTotala + "€ ordaindu behar duzu.\n-----------------------------------\n" + resto
 					+ "€ falta da\n\n" + "Dirua sartu nahi duzu (B)ai/(E)z:");
 			if (baiEzIrakurri()) {
-				System.out.println("Sartu dirua.");
-				double sartutakoDirua = doubleIrakurri();
-				resto -= sartutakoDirua;
-				resto = round(resto);
+				do {
+					System.out.println("Sartu dirua (0-500)");
+					sartutakoDirua = doubleIrakurri();
+					if (sartutakoDirua > 0) {
+						resto -= sartutakoDirua;
+						resto = round(resto);
+					} else if (sartutakoDirua > 500) {
+						System.out.println("Dirua ezin da 500 baino gehiago izan.");
+					} else {
+						System.out.println("Dirua ezin da negatiboa izan.");
+					}
+				} while (sartutakoDirua <= 0);
 			} else {
 				ordainduta.set(false);
 				return prezioTotala - resto;
@@ -225,6 +238,7 @@ public class SaltzekoMakina {
 	 */
 	private static void itzuli(double kanbioak) {
 		int kantitatea = 0;
+		System.out.println("=============================================");
 		for (int i = 0; i < DIRUMOTAK.length; i++) {
 			// -0.001 double-en zehaztasun-arazo bat zuzentzeko da.
 			while (kanbioak >= DIRUMOTAK[i] - 0.001) {
@@ -236,6 +250,7 @@ public class SaltzekoMakina {
 				kantitatea = 0;
 			}
 		}
+		System.out.println("=============================================");
 	}
 
 	/**
@@ -254,6 +269,7 @@ public class SaltzekoMakina {
 			} else {
 				produktuKantitateakHasieratu();
 			}
+			System.out.println("Kanbioak:");
 			itzuli(kanbioak);
 		}
 	}
