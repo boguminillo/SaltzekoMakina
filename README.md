@@ -9,7 +9,8 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 4. [Konplexutasun Ziklomatikoa](#konplexutasun-ziklomatikoa)
 5. [Sasikodea](#sasikodea)
 6. [Arazketa/Errore Txostena](#arazketaerrore-txostena)
-7. [JavaDoc Dokumentazioa](#javadoc-dokumentazioa)
+7. [Aurkezpena](#aurkezpena)
+8. [JavaDoc Dokumentazioa](#javadoc-dokumentazioa)
 
 ## Talde Kontratua
 
@@ -56,6 +57,12 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 ## Arazketa/Errore Txostena
 
 [Arazketa/Errore Txostena](/dokumentazioa/ArazketaTxostena.pdf)
+
+[:arrow_up:](#saltzekomakina)
+
+## Aurkespena
+
+[Aurkespena](/dokumentazioa/Aurkespena.odp)
 
 [:arrow_up:](#saltzekomakina)
 
