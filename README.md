@@ -60,9 +60,9 @@ Mikel Monasterio, Gontzal Izurza eta Julen Sanchez egindako ethazi erronka
 
 [:arrow_up:](#saltzekomakina)
 
-## Aurkespena
+## Aurkezpena
 
-[Aurkespena](/dokumentazioa/Aurkespena.odp)
+[Aurkezpena](/dokumentazioa/Aurkezpena.odp)
 
 [:arrow_up:](#saltzekomakina)
 
